@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
-import { CategoryService } from '../../services/category.service';
+
 
 @Component({
   selector: 'app-contacts',
@@ -12,16 +12,11 @@ import { CategoryService } from '../../services/category.service';
 export class ContactsComponent implements OnInit {
   customers: any[] = [];
   filteredCustomers: any[] = [];
-  categories;
 
-  category = '';
+  category: string;
 
   constructor(private userService: UserService,
-              private categoryService: CategoryService,
-              private route: ActivatedRoute) {
-
-    this.categories = this.categoryService.fetchAllCategories();
-  }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.userService.fetchAllCustomers().subscribe(customers => {

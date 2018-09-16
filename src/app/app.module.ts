@@ -25,6 +25,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminCustomerFormComponent } from './components/admin-customer-form/admin-customer-form.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+import { ContactsFilterComponent } from './components/contacts/contacts-filter/contacts-filter.component';
+import { CustomerCardComponent } from './components/customer-card/customer-card.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { ContactDetailsComponent } from './components/contact-details/contact-de
     AdminOrdersComponent,
     FooterComponent,
     AdminCustomerFormComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    ContactsFilterComponent,
+    CustomerCardComponent
   ],
   imports: [
     BrowserModule,

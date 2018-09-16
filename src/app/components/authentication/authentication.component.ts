@@ -21,11 +21,13 @@ export class AuthenticationComponent implements OnInit {
 
   submit() {
     this.errorMessage = '';
-    if (this.email === 'nilsholger1307@gmail.com' && this.password === 'Leadscore123!') {
+    console.log(this.email);
+    console.log(this.password);
+    if (this.email !== '' && this.password !== '') {
       this.userService.attemptAuth('login', this.email, this.password).subscribe(
         (data) => {
           if (data) {
-            this.router.navigateByUrl('contacts');
+            this.router.navigateByUrl('contacts?category=ALL');
           }
         }
       );
