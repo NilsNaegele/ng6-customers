@@ -50,7 +50,7 @@ import { ContactDetailsComponent } from './components/contact-details/contact-de
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule.forRoot(),
+    NgbModule,
     CustomFormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/login', pathMatch: 'full' },

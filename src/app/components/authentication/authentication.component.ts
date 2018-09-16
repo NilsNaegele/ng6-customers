@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { JwtService } from './../../services/jwt.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,13 +15,19 @@ export class AuthenticationComponent implements OnInit {
   password = '';
   errorMessage: string;
 
-  constructor(private userService: UserService, private jwtService: JwtService) { }
+  constructor(private userService: UserService,
+              private jwtService: JwtService,
+              private router: Router) { }
 
   submit() {
     this.errorMessage = '';
     if (this.email === 'nilsholger1307@gmail.com' && this.password === 'Leadscore123!') {
       this.userService.attemptAuth('login', this.email, this.password).subscribe(
-        (data) => console.log(data)
+        (data) => {
+          if (data) {
+            this.router.navigateByUrl('contacts');
+          }
+        }
       );
     } else {
       this.errorMessage = 'Email and/or password are wrong. Try again';
