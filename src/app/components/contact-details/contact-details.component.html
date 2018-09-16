@@ -1,0 +1,21 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-auto">
+        <ng-container *ngFor="let customer of customer">
+            <div class="col">
+                <div class="card" style="width: 30rem;">
+                    <img *ngIf="customer?.profilePicture === null" src="../../../assets/images/customer.jpeg" alt="Standard Profile Picture">
+                    <img *ngIf="customer?.profilePicture !== null" class="card-img-top" [src]="customer?.profilePicture" alt="Profile Picture">
+                    <div class="card-body">
+                      <h5 class="card-title">Name: {{ customer?.displayName }}</h5>
+                      <p class="card-text">Category: {{ customer?.contactType }}</p>
+                      <p class="card-text" *ngIf="customer?.emails === null">Email: ...</p> 
+                      <p class="card-text" *ngIf="customer?.emails !== null">Email: {{ customer?.emails[0].email }}</p>
+                      <p class="card-text" *ngIf="customer?.phoneNumbers === null">Phone: ...</p>
+                      <p class="card-text" *ngIf="customer?.phoneNumbers !== null">Phone: {{ customer?.phoneNumbers[0]?.number }}</p>
+                      <a routerLink="/contacts" class="btn btn-danger btn-block">Back</a>
+                    </div>
+                  </div>
+            </div>
+        </ng-container>
+      </div>
+</div>

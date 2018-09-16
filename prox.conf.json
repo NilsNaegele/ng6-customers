@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "https://internal-api-staging-lb.interact.io/v2/",
+      "secure": false
+    }
+  }

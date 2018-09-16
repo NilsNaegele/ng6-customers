@@ -1,0 +1,35 @@
+<p>
+<a routerLink="/admin/customers-new" class="btn btn-primary">New Customer</a>
+</p>
+<p>
+    <input #query (keyup)="filter(query.value)" type="text"
+           class="form-control" placeholder="Search ...">
+</p>
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Website</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Last Updated</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of filteredCustomers">
+            <td *ngIf="customer.contactType === 'COMPANY'; else company">{{ customer?.companyName }}</td>
+            <td #company *ngIf="customer.contactType === 'PERSON'">{{ customer?.firstName + ' ' + customer?.lastName }}</td>
+            <td *ngIf="customer?.emails === null"></td>
+            <td *ngIf="customer?.emails !== null">{{ customer?.emails[0]?.email }}</td>
+            <td *ngIf="customer?.websites === null"></td>
+            <td *ngIf="customer?.websites !== null">{{ customer?.websites[0]?.url }}</td>
+            <td *ngIf="customer?.phoneNumbers === null"></td>
+            <td *ngIf="customer?.phoneNumbers !== null">{{ customer?.phoneNumbers[0]?.number }}</td>
+            <td>{{ customer?.updated | date:'medium' }}</td>
+            <td>
+                <a [routerLink]="['/admin/customers/', 123456789]">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
